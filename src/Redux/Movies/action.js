@@ -8,10 +8,9 @@ export const getMoviesRequest = () => {
 }
 
 export const getMoviesSuccess = (payload, key) => {
-    console.log(key)
     return {
         type: GET_MOVIES_SUCCESS,
-        payload: {movieList:{[key]: payload}}
+        payload: {[key]: payload}
     }
 }
 

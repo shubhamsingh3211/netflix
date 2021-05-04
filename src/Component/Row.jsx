@@ -9,10 +9,10 @@ export const Row = ({title, fetchUrl, isLargeRow = false}) => {
     const dispatch = useDispatch()
 
     const movies_list = useSelector((state) => {
-        console.log("State ", state)
-        return state.movies.movieList
+        // console.log("State ", state)
+        return state.movies.moviesList
     })
-    // console.log(movies_list)
+    console.log(movies_list)
 
     React.useEffect(() => {
         dispatch(getMovies({fetchUrl, title}))
@@ -22,11 +22,11 @@ export const Row = ({title, fetchUrl, isLargeRow = false}) => {
         <>
             <div className="flex h-44 overflow-x-scroll">
                 <p className="text-white">{title}</p>
-                {/* {
-                    movies_list.map((movie) => {
+                {
+                   movies_list && movies_list[title] && movies_list[title].map((movie) => {
                         return <img src={`https://image.tmdb.org/t/p/original${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name}  />
                     })
-                } */}
+                }
             </div>
         </>
     )
